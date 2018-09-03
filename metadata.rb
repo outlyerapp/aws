@@ -12,7 +12,7 @@ end
 
 source_url 'https://github.com/chef-cookbooks/aws'
 issues_url 'https://github.com/chef-cookbooks/aws/issues'
-chef_version '>= 12.9' if respond_to?(:chef_version)
+chef_version '>= 12.7.2' if respond_to?(:chef_version)
 
 gem 'aws-sdk-cloudformation'
 gem 'aws-sdk-cloudwatch'
