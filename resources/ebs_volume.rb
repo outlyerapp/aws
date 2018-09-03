@@ -92,7 +92,7 @@ action :attach do
       mark_delete_on_termination(new_resource.device, vol[:volume_id], instance_id) if new_resource.delete_on_termination
       # always use a symbol here, it is a Hash
       node.normal['aws']['ebs_volume'][new_resource.name]['volume_id'] = vol[:volume_id]
-      node.save # ~FC075
+      node.save unless Chef::Config[:solo] # ~FC075
     end
   end
 end
