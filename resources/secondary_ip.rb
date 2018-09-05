@@ -1,5 +1,4 @@
-property :ip,                    String
-property :eni_id,                String
+property :ip,                    String, required: true
 property :interface,             String, default: lazy { node['network']['default_interface'] }
 property :timeout,               [Integer, nil], default: 3 * 60 # 3 mins, nil or 0 for no timeout
 
@@ -15,8 +14,7 @@ include AwsCookbook::Ec2 # needed for aws_region helper
 
 action :assign do
   ip = new_resource.ip
-#  eni = interface_eni_id(new_resource.interface)
-  eni = new_resource.eni_id
+  eni = interface_eni_id(new_resource.interface)
   assigned_addresses = interface_private_ips(new_resource.interface)
 
   if assigned_addresses.include? ip
